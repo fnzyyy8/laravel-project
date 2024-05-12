@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\HelloWorld;
+use  App\Http\Controllers\NestedViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/testing',function (){
+    return "Selamat Datang";
+});
+
+Route::redirect('/wrong','/testing');
+
+Route::fallback(function (){
+    return 'Halaman tidak ada';
+});
+
+Route::get('/hello',[HelloWorld::class,'index']);
+
+Route::get('world',[NestedViewController::class,'index']);
