@@ -6,6 +6,7 @@ use  App\Http\Controllers\NestedViewController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\InputTypeController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ResponseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,11 @@ Route::post('/filter-except',[InputTypeController::class,'filterExcept']);
 
 Route::get('/upload',[FileController::class,'uploadView'])->name('file.upload');
 Route::post('/upload',[FileController::class,'upload']);
+
+
+Route::get('/response/hello',[ResponseController::class,'response']);
+Route::get('/response/header',[ResponseController::class,'header']);
+Route::get('response/view',[ResponseController::class,'responseView']);
+Route::get('response/json',[ResponseController::class,'responseJson']);
+Route::get('response/file',[ResponseController::class,'responseFile']);
+Route::get('response/download',[ResponseController::class,'responseDownload']);
