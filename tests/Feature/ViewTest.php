@@ -28,8 +28,15 @@ class ViewTest extends TestCase
 
     public function testViewNoRoute()
     {
-        $this->view('noroute',['data'=>'ini data'])
+        $this->view('/noroute',['data'=>'ini data'])
             ->assertSeeText('ini data');
+    }
+
+    public function testRegexParam()
+    {
+        $this->get('/number/1')->assertSeeText('Number - 1');
+        $this->get('/number/ayam')->assertSeeText('Halaman tidak ada');
+
     }
 
 }
