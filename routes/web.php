@@ -69,3 +69,20 @@ Route::get('/redirect/name',[RedirectController::class,'redirectName']);
 Route::get('/redirect/name/{name}',[RedirectController::class,'redirectHello'])->name('redirectName');
 Route::get('/redirect/action',[RedirectController::class,'redirectAction']);
 Route::get('/redirect/away',[RedirectController::class,'redirectAway']);
+
+Route::get('/middleware',function (){
+    return "Ok";
+})->middleware(['contoh']);
+
+Route::get('/middleware/group',function (){
+    return "Group";
+})->middleware(['fsh']);
+
+Route::get('/middleware/param',function (){
+    return 'Param Middleware';
+})->middleware('akses:FSH,201');
+
+Route::get('/middleware/param/without',function (){
+    return 'Param Middleware Without';
+})->middleware('fsh')->withoutMiddleware('contoh');
+
