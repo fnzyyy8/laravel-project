@@ -109,3 +109,33 @@ Route::controller(SessionController::class)->prefix('/session')
         Route::get('/create','createSession');
         Route::get('/clear','clearSession');
     });
+
+Route::prefix('/error')->group(function (){
+    Route::get('/sample',function (){
+        throw new Exception('Simple Error Message');
+    });Route::get('/manual',function (){
+        report(new Exception('Send Error'));
+        return "Ok";
+    });
+    Route::get('/validation',function (){
+        throw new \App\Exceptions\ValidationException("Validation Error");
+    });
+});
+
+Route::prefix('/abort')->group(function (){
+    Route::get('/400',function (){
+        abort(400);
+    });
+
+    Route::get('/401',function (){
+        abort(401);
+    });
+
+    Route::get('500',function (){
+        abort(500);
+    });
+});
+
+
+
+
