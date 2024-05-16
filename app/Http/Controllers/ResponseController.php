@@ -34,7 +34,7 @@ class ResponseController extends Controller
     public function responseView(Request $request): Response
     {
         return response()
-            ->view('hello', ['name' => 'Farhan'], 200);
+            ->view('hello', ['name' => 'Anto'], 200);
 
     }
 
